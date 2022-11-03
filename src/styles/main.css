@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    /* colors */
+    --theme-color: #CDBA65;
+    --white: #C0C3C2;
+    --background-color: #171C18;
+    --block-background-color: #1B211D;
+    --accent-color: #B9C9B5;
+    --active-color: #E5D279;
+
+    /* border radius */
+    --block-border-radius: 8px;
+    --page-border-radius: 16px;
+
+    --max-content-width: 1600px;
+    --footer-height: 200px;
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*:focus {
+    outline: none;
+}
+
+body {
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    background-color: var(--background-color);
+    color: var(--white);
+    overflow: auto;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        textarea:-webkit-autofill:hover,
+        textarea:-webkit-autofill:focus,
+        select:-webkit-autofill,
+        select:-webkit-autofill:hover,
+        select:-webkit-autofill:focus {
+            -webkit-text-fill-color: var(--white);
+            -webkit-box-shadow: 0 0 0px 1000px #293026 inset;
+            transition: background-color 5000s ease-in-out 0s;
+            border-radius: var(--block-border-radius);
+            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+        }
+
+a:hover {
+    color: var(--theme-color) !important;
+}

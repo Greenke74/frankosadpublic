@@ -1,0 +1,33 @@
+@mixin page-block {
+    box-shadow: 0px 4px 25px rgba(27, 33, 29, 0.6);
+    background-color: var(--block-background-color);
+}
+
+@mixin block {
+    background: linear-gradient(90deg, #2A2F23 0%, #1D2620 100%);
+    box-shadow: 0px 0px 15px rgba(69, 84, 74, 0.2);
+    border-radius: var(--page-border-radius);
+}
+
+
+@mixin accent-light {
+    text-shadow: 0px 0px 15px rgba(185, 201, 181, 0.2);
+}
+
+@mixin theme-light {
+    text-shadow: 0px 0px 15px rgba(185, 201, 181, 0.2);
+}
+
+@mixin white-light {
+    text-shadow: 0px 0px 20px rgba(192, 195, 194, 0.2);
+}
+
+@mixin page-width {
+    max-width: calc(var(--max-content-width) + 40px);
+    width: 100%;
+    padding: 0 20px;
+    @media (max-width:541px) {
+        max-width: calc(var(--max-content-width) + 20px);
+        padding: 0 10px;
+    }
+}

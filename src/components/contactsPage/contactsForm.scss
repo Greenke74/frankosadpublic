@@ -1,0 +1,35 @@
+@import '../../styles/mixins.scss';
+
+.card {
+    width: 100%;
+    background: linear-gradient(90deg, rgba(42, 47, 35, 0.4) 0%, rgba(29, 38, 32, 0.4) 98.06%), #1B211D;
+    padding: 40px;
+    border-radius: var(--block-border-radius);
+
+    .form-title {
+        font-weight: 600;
+        color: var(--theme-color);
+        font-family: inherit;
+    }
+
+    .btn {
+        background-color: #202D24;
+        border-radius: var(--block-border-radius);
+        color: var(--white);
+        font-weight: 400;
+        font-size: 18px;
+        padding: 5px 30px;
+        text-transform: none;
+        font-family: inherit;
+    }
+
+    .btn:hover {
+        background-color: #141e17;
+    }
+}
+
+@media (max-width: 540px) {
+    .card{
+        padding: 40px 10px;
+    }
+}

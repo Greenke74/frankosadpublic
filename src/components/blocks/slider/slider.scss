@@ -1,0 +1,181 @@
+@import '../../../styles/mixins.scss';
+
+.services-slider-root {
+    max-width: 100%;
+
+    .services-slider-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        .info-slider {
+            position: absolute;
+            top: 0;
+            z-index: 1;
+            width: calc(100% - 100px);
+            max-width: calc(var(--max-content-width) - 100px);
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            height: 100%;
+
+            .info-content {
+                margin-bottom: 25px;
+                width: fit-content !important;
+                padding: 0px 100px 80px 20px;
+                @include block;
+
+                h3 {
+                    padding: 15px 0 5px;
+                }
+
+                span {
+                    margin: 10px 0;
+                }
+
+            }
+
+            button {
+                position: absolute;
+                bottom: 45px;
+                left: 20px;
+                @include theme-light;
+            }
+
+            @media (max-width: 990px) {
+                .info-content {
+                    padding: 0px 100px 42px 20px;
+
+                }
+
+                button {
+                    left: 28px;
+                }
+            }
+
+        }
+
+        @media (max-width: 600px) {
+            .info-slider {
+                left: 15px;
+
+                .info-content {
+                    padding: 0px 100px 42px 20px;
+                    background: transparent !important;
+                    box-shadow: none !important;
+                }
+            }
+
+        }
+
+        .image-slider {
+            width: 100%;
+
+            .slick-slider {
+                min-height: 600px;
+
+                .slick-slide {
+                    height: 600px !important;
+                    pointer-events: none;
+                }
+
+                width: 100%;
+                box-shadow: 0px 2px 24px rgba(0, 0, 25, 0.45);
+                touch-action: pan-y;
+
+                .slick-track {
+                    display: flex;
+                    flex-wrap: nowrap !important;
+                }
+
+                div {
+                    height: 100%;
+                    display: block;
+                }
+
+                .slick-track,
+                .slick-list {
+                    -webkit-transform: translate3d(0, 0, 0);
+                    -moz-transform: translate3d(0, 0, 0);
+                    -ms-transform: translate3d(0, 0, 0);
+                    -o-transform: translate3d(0, 0, 0);
+                    transform: translate3d(0, 0, 0);
+                    transition-delay: 10ms;
+                    height: 100%;
+                }
+
+                .slick-slide * {
+                    backface-visibility: hidden;
+                    -webkit-backface-visibility: hidden;
+                    -moz-backface-visibility: hidden;
+                }
+
+                .slider-arrow {
+                    position: absolute !important;
+                    color: var(--white);
+                    z-index: 1;
+                    height: 100%;
+                    top: 0;
+                    background-color: transparent !important;
+                }
+
+                .right-arrow {
+                    right: 10px;
+                }
+
+                .left-arrow {
+                    left: 10px;
+                }
+
+                @media (max-width: 990px) {
+                    .right-arrow {
+                        right: 0px;
+                        padding: 4px;
+                    }
+
+                    .left-arrow {
+                        left: 0px;
+                        padding: 4px;
+                    }
+                }
+            }
+
+            @media (max-width: 1600px) {
+                .slick-slider {
+                    min-height: 350px;
+
+                    .slick-slide {
+                        height: 350px !important;
+                    }
+                }
+
+            }
+
+            @media (max-width: 990px) {
+                .slick-slider {
+                    min-height: 200px;
+
+                    .slick-slide {
+                        height: 200px !important;
+
+                        .slide-content {
+                            margin: 10px 0;
+                        }
+                    }
+                }
+            }
+
+            @media (max-width: 600px) {
+                .slick-slider {
+                    min-height: 170px;
+
+                    .slick-slide {
+                        height: 170px !important;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+@import '../../styles/mixins.scss';
+
+.footer {
+    background-color: var(--background-color);
+    min-height: var(--footer-height);
+    width: 100%;
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+
+    .container {
+        @include page-width;
+    }
+}
