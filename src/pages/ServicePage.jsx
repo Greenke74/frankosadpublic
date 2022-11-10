@@ -1,8 +1,11 @@
 import React from 'react'
+import BlocksList from '../components/blocks/BlocksList'
 
 const ServicePage = () => {
   return (
-    <div>ServicePage</div>
+    <>
+    <BlocksList blockTypes={['Services']}/>
+    </>
   )
 }
 

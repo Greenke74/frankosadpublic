@@ -21,9 +21,9 @@ const PageBlock = ({ component: Component, idx, loadedAmount, setLoadedAmount, f
 		readyToLoad && (
 			<section style={{
 				margin: '0 auto',
-				marginBottom: isDesktop ? '100px' : '30px',
+				marginTop: fullWidth ? 0 : isDesktop ? '50px' : '15px',
+				marginBottom: fullWidth ? 0 : isDesktop ? '50px' : '15px',
 				width: '100%',
-				margin: '0 auto',
 				maxWidth: fullWidth
 					? '100%'
 					: isLarge

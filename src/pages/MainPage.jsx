@@ -5,19 +5,11 @@ import BlocksList from '../components/blocks/BlocksList.jsx';
 import { getPage } from '../services/pages-service.js';
 
 const MainPage = () => {
-  const [pageData, setPageData] = useState(null);
-
-  useEffect(() => {
-    getPage('mainPage').then(page => {
-      console.log(page);
-      setPageData(page);
-    })
-
-  }, [])
   
+
   return (
     <>
-      <BlocksList />
+      <BlocksList blockTypes={['ServicesSlider','StepByStepInfo', 'StatisticCounter', 'PortfolioPreview']} />
     </>
   )
 }

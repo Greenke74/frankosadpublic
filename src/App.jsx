@@ -12,6 +12,7 @@ import './styles/main.css';
 const MainPage = lazy(() => import("./pages/MainPage.jsx"));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage.jsx'));
 const ServicePage = lazy(() => import('./pages/ServicePage.jsx'));
+const PortfolioPage = lazy(() => import('./pages/PortfolioPage.jsx'));
 
 const App = () => {
 
@@ -21,8 +22,12 @@ const App = () => {
       element: <MainPage />
     },
     {
-      path: '/services/:alias',
+      path: '/services',
       element: <ServicePage />
+    },
+    {
+      path: '/portfolio',
+      element: <PortfolioPage />
     },
     {
       path: '*',
