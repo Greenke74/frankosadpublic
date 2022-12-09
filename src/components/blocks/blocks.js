@@ -15,30 +15,30 @@ export const getBlocks = (type) => {
 	const blocks = [
 		{
 			component: ServicesSlider,
-			type: 'ServicesSlider',
+			type: 'slider',
 			fullWidth: true
 		},
 		{
 			component: StepByStepInfo,
-			type: 'StepByStepInfo'
+			type: 'stepByStep'
 		},
 		{
 			component: StatisticCounter,
-			type: 'StatisticCounter',
+			type: 'counter',
 			fullWidth: true
 		},
 		{
 			component: Portfolio,
-			type: 'Portfolio'
+			type: 'portfolio'
 		},
 		{
 			component: PortfolioPreview,
-			type: 'PortfolioPreview'
+			type: 'portfolioPreview'
 		}
 		,
 		{
 			component: Services,
-			type: 'Services'
+			type: 'services'
 		}
 	]
 

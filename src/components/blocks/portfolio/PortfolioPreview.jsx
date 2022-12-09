@@ -4,8 +4,15 @@ import PortfolioCard from './PortfolioCard.jsx'
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import './portfolio.scss'
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from 'react-query';
+
 
 const PortfolioPreview = () => {
+
+
+  //const{data: blockData} = useQuery('portfolioPrevId', () => getBlock(1))
+
+
 
   const data = [
     {
@@ -32,7 +39,7 @@ const PortfolioPreview = () => {
     <Box sx={{ backgroundColor: 'red' }} className='portfolio-container'>
       <Typography className='preview-title'>Наші роботи</Typography>
       <Grid container spacing={'45px'} >
-        {data.map((elem, index) =>
+        {blockData?.data?.previews?.map((elem, index) =>
           <Grid xs={12} sm={6} lg={4} item key={index} >
             <PortfolioCard data={elem} size={'small'}/>
           </Grid>

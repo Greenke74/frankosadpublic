@@ -45,13 +45,9 @@ const Portfolio = () => {
       location: 'с. Ісаків',
       typeOfBuilding: 'Приватний будинок',
       img: './img.jpg'
-    },
-    {
-      location: 'с. Ісаків',
-      typeOfBuilding: 'Приватний будинок',
-      img: './img.jpg'
     }
   ]
+
 
   return (
     <>
@@ -60,7 +56,7 @@ const Portfolio = () => {
         <Grid container spacing={'45px'} >
           {data.map((elem, index) =>
             <Grid xs={12} sm={6} lg={6} item key={index} >
-              <PortfolioCard data={elem} size={''} />
+              <PortfolioCard data={elem} />
             </Grid>
           )}
         </Grid>

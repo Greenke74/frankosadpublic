@@ -42,24 +42,26 @@ const ContactsFooter = () => {
         </Grid>
         <Grid xs={12} item>
           <a href={mainSettings?.mediaLinks?.instagramUrl ?? ''}
+            target='_blank_'
             style={{
               ...contactLinkStyle,
               display: 'flex',
               alignItems: 'center',
               gap: '5px'
             }}>
-            <InstagramIcon style={{ color: '#e9fbf09e' }} /> franko_sad
+            <InstagramIcon style={{ color: '#e9fbf09e' }} /> {(mainSettings?.mediaLinks?.instagramUrl.split('/').pop() ?? '')}
           </a>
         </Grid>
         <Grid xs={12} item>
           <a href={mainSettings?.mediaLinks?.facebookUrl ?? ''}
+            target='_blank_'
             style={{
               ...contactLinkStyle,
               display: 'flex',
               alignItems: 'center',
               gap: '5px'
             }}>
-            <FacebookIcon style={{ color: '#e9fbf09e' }} /> franko_sad
+            <FacebookIcon style={{ color: '#e9fbf09e' }} /> {(mainSettings?.mediaLinks?.facebookUrl.split('/').pop() ?? '')}
           </a>
         </Grid>
       </Grid>
