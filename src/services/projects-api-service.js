@@ -6,6 +6,7 @@ export const getProject = (id) => new Promise((resolve, reject) => {
 			.from('projects')
 			.select()
 			.eq('id', id)
+			.single()
 			.then(({ data, error }) => {
 				if (error) {
 					reject(error);
@@ -36,9 +37,9 @@ export const getProjects = () => new Promise((resolve, reject) => {
 	}
 })
 
-export const getProjectWithBlocks = (id) => new Promise((resolve, reject) => {
+export const getProjectWithBlocks = (value) => new Promise((resolve, reject) => {
 	try {
-		supabase.rpc('get_project_with_blocks', {_id:id})
+		supabase.rpc('get_project_with_blocks', value)
 			.then(({ data, error }) => {
 				if (error) {
 					reject(error);
