@@ -30,7 +30,7 @@ const Footer = () => {
             </Grid>
           </Card>
         </Grid>
-        <Grid xs={12} sm={6} md={3} item>
+        <Grid xs={12} sm={6} md={9} item>
           <ContactsFooter />
         </Grid>
       </Grid>

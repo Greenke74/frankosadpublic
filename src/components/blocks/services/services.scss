@@ -1,0 +1,7 @@
+@import '../../../styles/mixins.scss';
+
+.services-container {
+    @include page-block;
+    border-radius: var(--page-border-radius);
+    padding: 45px;
+}

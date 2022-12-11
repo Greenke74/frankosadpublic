@@ -39,7 +39,7 @@ const InfoSlider = ({ slides, imageSlider, setInfoSlider }) => {
 					ref={(infoSliderRef => setInfoSlider(infoSliderRef))}
 					{...settings}
 				>
-					{slides.map((s, index) => (
+					{slides?.map((s, index) => (
 						<div
 							key={index}
 							className='info-content'

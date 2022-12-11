@@ -1,7 +1,7 @@
 export const navLinks = [
     {
         title: 'Портфоліо',
-        to: '/protfolio'
+        to: '/portfolio'
     },
     {
         title: 'Послуги',
@@ -18,5 +18,29 @@ export const navLinks = [
     {
         title: 'Про нас',
         to: '/aboutUs'
+    }
+]
+
+
+export const Links = [
+    {
+        breadcrumb: 'Портфоліо',
+        path: '/portfolio'
+    },
+    {
+        breadcrumb: 'Послуги',
+        path: '/services'
+    },
+    {
+        breadcrumb: 'Сезонні пропозиції',
+        path: '/offers'
+    },
+    {
+        breadcrumb: 'Контакти',
+        path: '/contacts'
+    },
+    {
+        breadcrumb: 'Про нас',
+        path: '/aboutUs'
     }
 ]

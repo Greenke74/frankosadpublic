@@ -29,7 +29,6 @@ export const Layout = ({ children }) => {
     window.scrollTo({ top: window.scrollY<40 ? 0 : 40 })
   }, [pathname])
 
-
   return (
     <>
       <Helmet>

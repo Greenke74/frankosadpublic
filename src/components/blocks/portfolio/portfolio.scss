@@ -1,0 +1,121 @@
+@import '../../../styles/mixins.scss';
+
+.portfolio-container {
+    border-radius: var(--page-border-radius);
+    @include page-block;
+    padding: 45px;
+    
+    .portfolio-card {
+        aspect-ratio: 1.9;
+        width: 100%;
+        border-radius: var(--block-border-radius);
+
+        .card-content {
+            margin: 15px;
+            @include page-block;
+            padding: 10px 20px;
+            border-radius: var(--block-border-radius);
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+
+            .type-of-building {
+                font-weight: 400;
+                color: var(--theme-color);
+                font-family: inherit;
+            }
+
+            .location {
+                font-weight: 700;
+                font-family: inherit;
+            }
+        }
+    }
+
+    
+    @media (max-width: 800px) {
+        .portfolio-card {
+            //min-height: 180px;
+    
+            .card-content {
+                margin: 10px;
+                padding: 6px;
+    
+                .type-of-building {
+                    font-size: 10px;
+                }
+    
+                .location {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+    
+    @media (max-width: 600px) {
+        .portfolio-card {
+            //min-height: 280px;
+    
+            .card-content {
+                margin: 15px;
+                padding: 10px;
+    
+                .type-of-building {
+                    font-size: 14px;
+                }
+    
+                .location {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 426px) {
+        .portfolio-card {
+            //min-height: 180px;
+    
+            .card-content {
+                margin: 10px;
+                padding: 6px;
+    
+                .type-of-building {
+                    font-size: 10px;
+                }
+    
+                .location {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+    .btn-review {
+        font-weight: 500;
+        font-size: 24px;
+        padding: 0 30px;
+        text-transform: none;
+        font-family: inherit;
+        background-color: var(--theme-color);
+        color: var(--background-color);
+        border-radius: var(--block-border-radius);
+        @include button-light;
+    }
+
+    .preview-title {
+        font-weight: 600;
+        font-size: 40px;
+        font-family: inherit;
+        color: var(--theme-color);
+        @include block;
+        margin-bottom: 45px;
+        padding: 10px 50px;
+        @include accent-light;
+    }
+}
+
+@media (max-width: 800px) {
+    .portfolio-container{
+        padding: 20px;
+    }
+}

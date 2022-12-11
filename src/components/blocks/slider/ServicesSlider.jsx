@@ -12,6 +12,8 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './slider.scss'
+import { useQuery } from "react-query";
+import { getBlock } from "../../../services/blocks-api-service.js";
 
 const PrevArrow = ({ onClick }) => (
   <IconButton
@@ -33,7 +35,7 @@ const NextArrow = ({ onClick }) => (
   </IconButton>
 )
 
-const ServicesSlider = ({ onLoadEnd }) => {
+const ServicesSlider = ({blockData}) => {
   const [imageSlider, setImageSlider] = useState(null);
   const [infoSlider, setInfoSlider] = useState(null);
   const isDesktop = useMediaQuery('(min-width:991px)');
@@ -43,13 +45,13 @@ const ServicesSlider = ({ onLoadEnd }) => {
       alias: 'ozelenennya-teritorii',
       title: 'Озеленення',
       subtitle: 'території',
-      image: 'https://fdbjwhrarqlmsshfbotn.supabase.co/storage/v1/object/public/main-page-images/mainPageInfo1.jpg?t=2022-10-31T22%3A27%3A52.445Z'
+      image: 'img.jpg'
     },
     {
       alias: 'ozelenennya2-teritorii2',
       title: 'Озеленення2',
       subtitle: 'території2',
-      image: 'rulon.png'
+      image: 'img.jpg'
     },
     {
       alias: 'avtomatichni-polyv',
@@ -59,9 +61,7 @@ const ServicesSlider = ({ onLoadEnd }) => {
     },
   ]);
 
-  useEffect(() => {
-    onLoadEnd();
-  }, [])
+  //const{data: blockData, isFetched} = useQuery('sliderId', () => getBlock(164))
 
   const imageSliderSettings = {
     asNavFor: infoSlider,
@@ -74,10 +74,10 @@ const ServicesSlider = ({ onLoadEnd }) => {
   return (
     <div className="services-slider-root">
       <div className="services-slider-wrapper">
-        <InfoSlider slides={slides} imageSlider={imageSlider} setInfoSlider={setInfoSlider} />
+        <InfoSlider slides={blockData?.data?.slides} imageSlider={imageSlider} setInfoSlider={setInfoSlider} />
         <div className='image-slider'>
           <Slider {...imageSliderSettings} ref={(imageSliderRef => setImageSlider(imageSliderRef))} >
-            {slides.map((s, index) => {
+            {blockData?.data?.slides?.map((s, index) => {
               return (
                 <div
                   key={index}

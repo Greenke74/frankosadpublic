@@ -1,23 +1,17 @@
-import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux/es/hooks/useSelector';
-
+import React from 'react'
+import { useQuery } from 'react-query';
 import BlocksList from '../components/blocks/BlocksList.jsx';
-import { getPage } from '../services/pages-service.js';
+import { getMainPageBlocks } from '../services/pages-service.js';
 
 const MainPage = () => {
-  const [pageData, setPageData] = useState(null);
 
-  useEffect(() => {
-    getPage('mainPage').then(page => {
-      console.log(page);
-      setPageData(page);
-    })
+  const{ data: mainPageBlocksData} = useQuery('mainPageBlocksId', () => getMainPageBlocks())
 
-  }, [])
+  mainPageBlocksData?.data?.sort((a, b) => a?.position - b?.position)
   
   return (
     <>
-      <BlocksList />
+      <BlocksList blocksData={mainPageBlocksData?.data} blockTypes={(mainPageBlocksData?.data??[]).map(item => item?.type)} />
     </>
   )
 }
