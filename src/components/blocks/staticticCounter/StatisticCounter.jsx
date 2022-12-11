@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useMediaQuery, Grid } from '@mui/material'
 import './statisticCounter.scss'
+import { formatNumber } from '../../../helpers/number-helper';
 
 const StatisticCounter = ({ blockData }) => {
   const isDesktop = useMediaQuery('(min-width: 900px)');
@@ -24,7 +25,7 @@ const StatisticCounter = ({ blockData }) => {
                   {elem.title}
                 </h3>
                 <p className='counter'>
-                  {elem.counter}
+                  { formatNumber(elem.counter) }
                 </p>
               </div>
             </Grid>

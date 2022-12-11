@@ -11,7 +11,7 @@ const PortfolioCard = ({ data, size, onClick }) => {
   return (
     <>
       <Grid
-        sx={{ backgroundImage: `url(${getImageSrc(data.image)})`, backgroundSize: 'cover' }}
+        sx={{ backgroundImage: `url(${getImageSrc(data.image)})`, backgroundSize: 'cover', cursor: 'pointer' }}
         className='portfolio-card'
         display={'flex'}
         alignItems={'end'}

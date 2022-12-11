@@ -1,7 +1,7 @@
 import { Breadcrumbs, Typography } from '@mui/material'
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Links } from '../../services/nav-routes-service'
+import { navLinks } from '../../services/nav-routes-service'
 import useReactRouterBreadcrumbs from 'use-react-router-breadcrumbs';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
@@ -16,7 +16,7 @@ const HomeIcon = styled(HomeOutlinedIcon)({
 
 const MyBreadcrumbs = () => {
 
-  const breadcrumbs = useReactRouterBreadcrumbs([...Links, { breadcrumb: HomeIcon, path: '/' }])
+  const breadcrumbs = useReactRouterBreadcrumbs([...navLinks, { breadcrumb: HomeIcon, path: '/' }])
   const { pathname } = useLocation()
 
   return (

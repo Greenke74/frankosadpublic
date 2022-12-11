@@ -18,7 +18,7 @@ export const getMainPageBlock = (id) => new Promise((resolve, reject) => {
 
 export const getMainPageBlocks = () => new Promise((resolve, reject) => {
     try {
-        supabase.rpc('get_main_page_blocks')
+        supabase.rpc('get_published_main_page_blocks')
         .then(response => {
             if (response.error) {
                 reject(response)

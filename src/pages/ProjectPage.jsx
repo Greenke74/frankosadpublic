@@ -1,7 +1,7 @@
 import React from 'react'
 import { useQuery } from 'react-query'
 import { useParams } from 'react-router-dom'
-import { getProjectBlocks } from '../services/projects-api-service'
+import { getProjectWithBlocksByAlias } from '../services/projects-api-service'
 import BlocksList from '../components/blocks/BlocksList.jsx';
 
 
@@ -9,7 +9,7 @@ const ProjectPage = () => {
   
   const{alias} = useParams()
 
-  const{data: projectData} = useQuery(`projectId+${alias}`, () => getProjectBlocks(alias))
+  const{data: projectData} = useQuery(`projectId+${alias}`, () => getProjectWithBlocksByAlias(alias))
 
   projectData?.blocks?.sort((a, b) => a?.position - b?.position)
 
