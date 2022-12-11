@@ -3,7 +3,7 @@
     height: 40px;
     background-color: var(--background-color);
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-evenly;  
 
     .contacts {
         display: flex;
@@ -21,7 +21,7 @@
             font-style: normal;
             font-weight: 400;
             font-size: 13px;
-            color: var(--white);
+            color: var(--white); 
 
             li {
                 display: flex;
@@ -41,5 +41,15 @@
                 color: var(--theme-color) !important;
             }
         }
+        @media (max-width: 1600px) {
+            ul{
+                font-size: 11px;
+            }
+        }  
     }
 }
+@media (max-width: 1600px) {
+    .contactsWrapper{
+        height: 30px;
+    }
+}  

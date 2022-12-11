@@ -10,8 +10,8 @@ const PageBlock = ({ component: Component, fullWidth, blockData }) => {
 		
 			<section style={{
 				margin: '0 auto',
-				marginTop: fullWidth ? 0 : isDesktop ? '50px' : '15px',
-				marginBottom: fullWidth ? 0 : isDesktop ? '50px' : '15px',
+				marginTop: fullWidth ? 0 : isLarge ? '50px' : isDesktop ? '25px' : '15px',
+				marginBottom: fullWidth ? 0 : isLarge ? '50px' : isDesktop ? '25px' : '15px',
 				width: '100%',
 				maxWidth: fullWidth
 					? '100%'
