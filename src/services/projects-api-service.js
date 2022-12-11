@@ -1,11 +1,12 @@
 import { supabase } from "../supabase/supabaseClient.js";
 
-export const getProject = (id) => new Promise((resolve, reject) => {
+export const getProject = (alias) => new Promise((resolve, reject) => {
 	try {
 		supabase
 			.from('projects')
 			.select()
-			.eq('id', id)
+			.single()
+			.eq('alias', alias)
 			.then(({ data, error }) => {
 				if (error) {
 					reject(error);
@@ -35,9 +36,9 @@ export const getProjects = () => new Promise((resolve, reject) => {
 	}
 })
 
-export const getProjectBlocks = (id) => new Promise((resolve, reject) => {
+export const getProjectBlocks = (alias) => new Promise((resolve, reject) => {
 	try {
-		supabase.rpc('get_project_blocks', {_id:id})
+		supabase.rpc('get_project_with_blocks', {_alias: alias})
 			.then(({ data, error }) => {
 				if (error) {
 					reject(error);

@@ -13,16 +13,10 @@ export const getMainSettings = async () => {
     }, {});
 }
 
-export const getPages = async () => {
-    const { data, error } = await supabase
-        .from('pages')
-        .select('name, value')
-    if(error) {
-        throw error
-    }
-    return data.reduce((result, field) => {
-        return {...result, [field.name]: field.value}
-    }, {});
+export const getImageSrc = (key) => {
+	const { data } = supabase.storage.from('images').getPublicUrl(key);
+
+	return data.publicUrl;
 }
 
 

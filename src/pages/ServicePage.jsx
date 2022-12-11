@@ -4,7 +4,7 @@ import BlocksList from '../components/blocks/BlocksList'
 const ServicePage = () => {
   return (
     <>
-    <BlocksList blockTypes={['Services']}/>
+    <BlocksList blockTypes={['services']}/>
     </>
   )
 }

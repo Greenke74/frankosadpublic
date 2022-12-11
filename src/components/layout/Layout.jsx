@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet';
 
 import { getMainSettings } from '../../services/settingApiService';
 import { mainSettingsSlice } from '../../redux/slices/mainSettingsSlice.js';
+import MyBreadcrumbs from './MyBreadcrumbs.jsx';
 
 export const Layout = ({ children }) => {
   const mainSettings = useSelector(state => state.mainSettings); 
@@ -47,6 +48,7 @@ export const Layout = ({ children }) => {
               : <HeaderMobile />
           }
         </Suspense>
+        <MyBreadcrumbs/>
         <main
           style={{
             margin: '0 auto',

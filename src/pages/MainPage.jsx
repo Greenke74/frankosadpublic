@@ -1,7 +1,8 @@
 import React from 'react'
 import { useQuery } from 'react-query';
 import BlocksList from '../components/blocks/BlocksList.jsx';
-import { getMainPageBlocks } from '../services/pages-service.js';
+import { getMainPageBlocks } from '../services/main_page_block_service.js';
+
 
 const MainPage = () => {
 

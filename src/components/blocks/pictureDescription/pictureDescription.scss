@@ -1,0 +1,6 @@
+@import '../../../styles/mixins.scss';
+
+.description-container{
+  @include button-light;
+  
+}
