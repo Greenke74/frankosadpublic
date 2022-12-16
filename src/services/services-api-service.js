@@ -23,7 +23,6 @@ export const getServices = () => new Promise((resolve, reject) => {
 		supabase
 			.from('services')
 			.select()
-			.eq('is_published', true)
 			.then(({ data, error }) => {
 				if (error) {
 					reject(error);
@@ -36,9 +35,9 @@ export const getServices = () => new Promise((resolve, reject) => {
 	}
 })
 
-export const getServiceWithBlocks = (id) => new Promise((resolve, reject) => {
+export const getServiceBlocks = (id) => new Promise((resolve, reject) => {
 	try {
-		supabase.rpc('get_service_with_blocks', {_id:id})
+		supabase.rpc('get_service_blocks', {_id:id})
 			.then(({ data, error }) => {
 				if (error) {
 					reject(error);

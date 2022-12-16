@@ -23,7 +23,6 @@ export const getOffers = () => new Promise((resolve, reject) => {
 		supabase
 			.from('offers')
 			.select()
-			.eq('is_published', true)
 			.then(({ data, error }) => {
 				if (error) {
 					reject(error);
@@ -36,9 +35,9 @@ export const getOffers = () => new Promise((resolve, reject) => {
 	}
 })
 
-export const getOfferWithBlocks = (id) => new Promise((resolve, reject) => {
+export const getOfferBlocks = (id) => new Promise((resolve, reject) => {
 	try {
-		supabase.rpc('get_offer_with_blocks', {_id:id})
+		supabase.rpc('get_offer_blocks', {_id:id})
 			.then(({ data, error }) => {
 				if (error) {
 					reject(error);

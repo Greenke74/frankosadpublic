@@ -30,13 +30,23 @@
                 font-family: inherit;
             }
         }
-    }
 
+        @media (max-width: 1200px) {
+            .card-content {
+                margin: 14px;
+                padding: 10px 14px;
     
-    @media (max-width: 800px) {
-        .portfolio-card {
-            //min-height: 180px;
+                .type-of-building {
+                    font-size: 14px;
+                }
     
+                .location {
+                    font-size: 18px;
+                }
+            }
+        }
+
+        @media (max-width: 900px) {      
             .card-content {
                 margin: 10px;
                 padding: 6px;
@@ -50,12 +60,8 @@
                 }
             }
         }
-    }
-    
-    @media (max-width: 600px) {
-        .portfolio-card {
-            //min-height: 280px;
-    
+
+        @media (max-width: 600px) {      
             .card-content {
                 margin: 15px;
                 padding: 10px;
@@ -69,12 +75,8 @@
                 }
             }
         }
-    }
 
-    @media (max-width: 426px) {
-        .portfolio-card {
-            //min-height: 180px;
-    
+        @media (max-width: 426px) {       
             .card-content {
                 margin: 10px;
                 padding: 6px;
@@ -102,6 +104,13 @@
         @include button-light;
     }
 
+    @media (max-width: 769px) {
+        .btn-review{
+            font-size: 20px;
+            padding: 0 20px;
+        }
+    }
+
     .preview-title {
         font-weight: 600;
         font-size: 40px;
@@ -112,10 +121,30 @@
         padding: 10px 50px;
         @include accent-light;
     }
+    @media (max-width: 1600px) {
+        .preview-title{
+            font-size: 32px;
+            padding: 5px 50px;
+            margin-bottom: 30px;
+        }
+    }
+    @media (max-width: 991px) {
+        .preview-title{
+            font-size: 24px;
+            padding: 5px 50px;
+            margin-bottom: 30px;
+        }
+    }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1600px) {
     .portfolio-container{
-        padding: 20px;
+        padding: 30px;
+    }
+}
+
+@media (max-width: 541px) {
+    .portfolio-container{
+        padding: 15px;
     }
 }

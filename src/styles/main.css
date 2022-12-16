@@ -3,7 +3,8 @@
 * {
     /* colors */
     --theme-color: #CDBA65;
-    --white: #C0C3C2;
+    /* --white: #C0C3C2; */
+    --white: #edefee;
     --background-color: #171C18;
     --block-background-color: #1B211D;
     --accent-color: #B9C9B5;

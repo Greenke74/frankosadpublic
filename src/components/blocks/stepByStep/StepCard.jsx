@@ -1,5 +1,6 @@
 import React from 'react'
 import { Grid, useMediaQuery } from '@mui/material';
+import { getImageSrc } from '../../../services/settingApiService';
 
 const StepCard = (props) => {
 
@@ -24,7 +25,7 @@ const StepCard = (props) => {
         </Grid>
         <Grid item sm={12} xs={12} md={6}>
           <div className='card-image' style={{
-            backgroundImage: `url(${props.data.image})`,
+            backgroundImage: `url(${getImageSrc(props.data.image)})`,
           }} />
         </Grid>
       </Grid>

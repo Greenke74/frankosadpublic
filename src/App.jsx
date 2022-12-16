@@ -17,6 +17,7 @@ const MainPage = lazy(() => import("./pages/MainPage.jsx"));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage.jsx'));
 const ServicePage = lazy(() => import('./pages/ServicePage.jsx'));
 const PortfolioPage = lazy(() => import('./pages/PortfolioPage.jsx'));
+const Project = lazy(() => import("./pages/ProjectPage.jsx"))
 
 const App = () => {
 
@@ -32,6 +33,10 @@ const App = () => {
     {
       path: '/portfolio',
       element: <PortfolioPage />
+    },
+    {
+      path: '/portfolio/:alias',
+      element: <Project/>
     },
     {
       path: '*',

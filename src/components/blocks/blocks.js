@@ -8,6 +8,11 @@ const StatisticCounter = lazy(() => import('./staticticCounter/StatisticCounter.
 const Portfolio = lazy(() => import('./portfolio/Portfolio.jsx'))
 const PortfolioPreview = lazy(() => import('./portfolio/PortfolioPreview.jsx'))
 
+const PictureDescription = lazy(() => import('./pictureDescription/PictureDescription.jsx'))
+const PictureParagraph = lazy(() => import('./pictureParagraph/PictureParagraph.jsx'))
+
+const HTMLContent = lazy(() => import('./htmlContent/HTMLContent.jsx'))
+
 const Services = lazy(() => import('./services/Services.jsx'))
  
 
@@ -34,11 +39,22 @@ export const getBlocks = (type) => {
 		{
 			component: PortfolioPreview,
 			type: 'portfolioPreview'
-		}
-		,
+		},
+		{
+			component: PictureDescription,
+			type: 'pictureDescription'
+		},
+		{
+			component: PictureParagraph,
+			type: 'pictureParagraph'
+		},
 		{
 			component: Services,
 			type: 'services'
+		},
+		{
+			component: HTMLContent,
+			type: 'htmlContent'
 		}
 	]
 
