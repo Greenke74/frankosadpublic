@@ -2,7 +2,7 @@ import React, { useState, useEffect, Suspense } from 'react';
 import PageBlock from './PageBlock.jsx';
 import { getBlocks } from './blocks.js';
 import { Spinner } from '../common/Spinner.jsx';
-import { Links, navLinks } from '../../services/nav-routes-service.js';
+import { Links } from '../../services/nav-routes-service.js';
 import { Breadcrumbs, Typography } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';

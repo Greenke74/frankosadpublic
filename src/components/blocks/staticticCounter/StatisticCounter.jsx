@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useMediaQuery, Grid } from '@mui/material'
 import './statisticCounter.scss'
 
