@@ -20,7 +20,7 @@ export const getBlocks = (type) => {
 	const blocks = [
 		{
 			component: ServicesSlider,
-			type: 'slider',
+			type: 'servicesSlider',
 			fullWidth: true
 		},
 		{

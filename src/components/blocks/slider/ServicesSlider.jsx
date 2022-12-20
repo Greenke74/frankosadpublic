@@ -10,6 +10,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './slider.scss'
+import { getImageSrc } from "../../../services/settingApiService.js";
 
 const PrevArrow = ({ onClick }) => (
   <IconButton
@@ -45,20 +46,21 @@ const ServicesSlider = ({ blockData }) => {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   }
+  console.log(blockData);
   return (
     <div className="services-slider-root">
       <div className="services-slider-wrapper">
-        <InfoSlider slides={blockData?.data?.slides} imageSlider={imageSlider} setInfoSlider={setInfoSlider} />
+        <InfoSlider slides={blockData?.services} imageSlider={imageSlider} setInfoSlider={setInfoSlider} />
         <div className='image-slider'>
           <Slider {...imageSliderSettings} ref={(imageSliderRef => setImageSlider(imageSliderRef))} >
-            {blockData?.data?.slides?.map((s, index) => {
+            {blockData?.services?.map((s, index) => {
               return (
                 <div
                   key={index}
                 ><div
                     className='image-slide'
                     style={{
-                      backgroundImage: `url(${s.image})`,
+                      backgroundImage: `url(${getImageSrc(s.image)})`,
                       maxHeight: isDesktop ? '700px' : '400px',
                       backgroundPositionX: 'center',
                       backgroundSize: 'cover'
