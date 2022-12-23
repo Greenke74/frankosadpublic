@@ -1,4 +1,4 @@
-import { Breadcrumbs, Typography, useMediaQuery } from '@mui/material'
+import { Breadcrumbs as MuiBreadcrumbs, Typography, useMediaQuery } from '@mui/material'
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { navLinks } from '../../services/nav-routes-service'
@@ -30,7 +30,7 @@ const MyBreadcrumbs = () => {
           display: 'flex',
           justifyContent: 'center'
         }}>
-          <Breadcrumbs
+          <MuiBreadcrumbs
             aria-label="breadcrumb"
             sx={{
               width: '100%', maxWidth: 'var(--max-content-width)', padding: '0 20px',
@@ -63,7 +63,7 @@ const MyBreadcrumbs = () => {
                   }}>{breadcrumb}</Typography>}
               </div>
             ))}
-          </Breadcrumbs>
+          </MuiBreadcrumbs>
         </div>
       }
     </>

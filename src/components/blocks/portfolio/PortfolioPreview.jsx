@@ -41,7 +41,7 @@ const PortfolioPreview = () => {
       <Grid container spacing={'45px'} >
         {blockData?.data?.previews?.map((elem, index) =>
           <Grid xs={12} sm={6} lg={4} item key={index} >
-            <PortfolioCard data={elem} size={'small'}/>
+            <PortfolioCard data={elem}/>
           </Grid>
         )}
       </Grid>

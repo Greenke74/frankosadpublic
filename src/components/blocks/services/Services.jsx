@@ -12,8 +12,6 @@ const Services = () => {
 
   const { data: servicesData } = useQuery('services', getServices)
 
-  console.log(servicesData);
-
   return (
     <Box className='services-container'>
       <Grid container spacing={'45px'}>

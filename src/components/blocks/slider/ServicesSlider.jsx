@@ -46,7 +46,7 @@ const ServicesSlider = ({ blockData }) => {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   }
-  console.log(blockData);
+
   return (
     <div className="services-slider-root">
       <div className="services-slider-wrapper">

@@ -11,11 +11,11 @@ const ProjectPage = () => {
 
   const{data: projectData} = useQuery(`projectId+${alias}`, () => getProjectWithBlocksByAlias(alias))
 
-  projectData?.blocks?.sort((a, b) => a?.position - b?.position)
+  projectData?.data?.blocks?.sort((a, b) => a?.position - b?.position)
 
   return (
     <>
-      <BlocksList blocksData={projectData?.blocks} blockTypes={(projectData?.blocks??[]).map(item => item?.type)}/>
+      <BlocksList blocksData={projectData?.data?.blocks} blockTypes={(projectData?.data?.blocks??[]).map(item => item?.type)}/>
     </>
   )
 }
