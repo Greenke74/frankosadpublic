@@ -58,8 +58,7 @@ export const getProjectPage = (value) => new Promise((resolve, reject) => {
 
 export const selectProjects = (params) => new Promise((resolve, reject) => {
 	try {
-
-		supabase.rpc('get_project_with_blocks_by_alias', {_alias: alias})
+		supabase.rpc(params.typeFilter != null ? 'select_projects_with_filters' : 'select_projects', params)
 		.then(response => {
 			if (response.error) {
 				reject(response.error.message)
@@ -67,6 +66,7 @@ export const selectProjects = (params) => new Promise((resolve, reject) => {
 			resolve(response)
 		})
 		.catch(error => reject(error))
+		
 	} catch (e) {
 		reject(e)
 	}
