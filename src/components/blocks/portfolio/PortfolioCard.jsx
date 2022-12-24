@@ -18,10 +18,10 @@ const PortfolioCard = ({ data, onClick }) => {
         onClick={onClick}
       >
         <Grid className='card-content'>
-          <LocationOnOutlinedIcon fontSize={isDesktop ? 'medium' : 'small'} />
+          <LocationOnOutlinedIcon fontSize={isDesktop ? 'medium' : 'small'} sx={{marginBottom: '4px'}}/>
           <div>
             <Typography className='type-of-building'>{data.type}</Typography>
-            <Typography className='location'>{data.location.length > 25 ? data.location.substr(0, 25) + '...' : data.location}</Typography>
+            <Typography className='location'>{data.location.length > 30 ? data.location.substr(0, 30) + '...' : data.location}</Typography>
           </div>
         </Grid>
       </Grid>

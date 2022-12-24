@@ -6,6 +6,7 @@ import useReactRouterBreadcrumbs from 'use-react-router-breadcrumbs';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import { styled } from '@mui/system';
+import { useSelector } from 'react-redux';
 
 const MyBreadcrumbs = () => {
   
@@ -18,14 +19,16 @@ const MyBreadcrumbs = () => {
     alignItems: 'center'
   })
 
-  const breadcrumbs = useReactRouterBreadcrumbs([...navLinks, { breadcrumb: HomeIcon, path: '/' }])
+  const breadcrumb = useSelector(state => state.breadcrumbs); 
+
+  const breadcrumbs = useReactRouterBreadcrumbs([...navLinks, { breadcrumb: HomeIcon, path: '/' }, breadcrumb])
   const { pathname } = useLocation()
 
   return (
     <>
     {pathname !== '/' &&
         <div style={{
-          background: 'linear-gradient(90deg, #252C22 0%, #2A2F23 100%)',
+          //background: 'linear-gradient(90deg, #252C22 0%, #2A2F23 100%)',
           padding: isLaptop ? '10px 0' : '20px 0',
           display: 'flex',
           justifyContent: 'center'
