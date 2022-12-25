@@ -22,7 +22,7 @@ const Portfolio = () => {
   const projectTypes = ['Всі проекти', 'Приватний будинок', 'Житловий комплекс', 'Підприємство']
 
 
-  const { data: projectsData, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery(
+  const { data: projectsData, fetchNextPage } = useInfiniteQuery(
     'projects', selectProjects , { getNextPageParam: (lastPage) => { console.log(lastPage); return {start: lastPage.offset, count};}}
   )
 
@@ -75,16 +75,7 @@ const Portfolio = () => {
           ))}
         </Grid>
         <Grid display={'flex'} justifyContent={'center'} marginTop={isTablet ? '20px' : '45px'}>
-          {/* <Button className='btn-review' variant='standart' onClick={()=>setStart(start + 1)}>Переглянути ще</Button> */}
-          <Button className='btn-review' variant='standart' onClick={() => {  fetchNextPage() }}
-            disabled={!hasNextPage || isFetchingNextPage}>
-            {/* Переглянути ще */}
-            {isFetchingNextPage
-              ? 'Loading more...'
-              : hasNextPage
-                ? 'Load More'
-                : 'Nothing more to load'}
-          </Button>
+          <Button className='btn-review' variant='standart' onClick={()=>fetchNextPage()}>Переглянути ще</Button>
         </Grid>
       </div>
     </>
