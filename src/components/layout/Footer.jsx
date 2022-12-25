@@ -17,13 +17,14 @@ const Footer = () => {
   }
 
   const isTablet = useMediaQuery('(max-width: 600px)')
+  const isTabletL = useMediaQuery('(max-width: 769px)')
 
   return (
     <footer className="footer" >
       <Grid container className="container">
         <Grid xs={12} sm={6} md={3} item >
-          <Card sx={{ width: '100%', boxShadow: 'none', padding: isTablet ? '15px 0' : '40px 0' }}>
-            <Grid container direction={'column'} spacing={'2.2vw'}>
+          <Card sx={{ width: '100%', boxShadow: 'none', padding: isTablet ? '20px 0' : '40px 0' }}>
+            <Grid container direction={'column'} spacing={isTabletL ? 3 : 5}>
               {navLinks.map((elem, index) =>
                 <Grid item key={index}>
                   <NavLink style={contactLinkStyle} to={elem.to} key={elem.to}>{elem.title}</NavLink>

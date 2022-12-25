@@ -11,7 +11,7 @@ const StepCard = (props) => {
       <Grid container spacing={isDesktop ? 5 : 2} className='step-by-step-card'>
         <Grid item container direction='column' sm={12} md={6}>
           <div className='title-container'>
-            <h4 className='card-number'>{props.data.number}</h4>
+            <h4 className='card-number'>{`0${props.number}`}</h4>
             <h3 className='card-title'
             >{props.data.title}</h3>
           </div>

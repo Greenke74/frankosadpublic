@@ -7,39 +7,15 @@ import { useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
 
 
-const PortfolioPreview = () => {
-
-
-  //const{data: blockData} = useQuery('portfolioPrevId', () => getBlock(1))
-
-
-
-  const data = [
-    {
-      location: 'с. Ісаків',
-      typeOfBuilding: 'Приватний будинок',
-      img: './img.jpg'
-    },
-    {
-      location: 'с. Ісаків',
-      typeOfBuilding: 'Приватний будинок',
-      img: './img.jpg'
-    },
-    {
-      location: 'с. Ісаків',
-      typeOfBuilding: 'Приватний будинок',
-      img: './img.jpg'
-    }
-  ]
+const PortfolioPreview = ({blockData}) => {
 
   const navigate = useNavigate()
   
-
   return (
     <Box sx={{ backgroundColor: 'red' }} className='portfolio-container'>
       <Typography className='preview-title'>Наші роботи</Typography>
       <Grid container spacing={'45px'} >
-        {blockData?.data?.previews?.map((elem, index) =>
+        {blockData?.projects?.map((elem, index) =>
           <Grid xs={12} sm={6} lg={4} item key={index} >
             <PortfolioCard data={elem}/>
           </Grid>

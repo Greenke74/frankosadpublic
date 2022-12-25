@@ -21,12 +21,15 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            text-align: center;
             gap: 13px;
 
             .title {
-                font-weight: 400;
-                font-size: 40px;
+                font-weight: 600;
+                //font-size: 40px;
+                font-size: calc(20px + 0.7vw);
                 color: var(--theme-color);
+                white-space: nowrap;
             }
 
             .counter {
@@ -36,46 +39,46 @@
             }
         }
 
-        @media (max-width:1299px) {
-            .card {
-                .title {
-                    font-size: 26px;
-                }
+        // @media (max-width:1299px) {
+        //     .card {
+        //         .title {
+        //             font-size: 26px;
+        //         }
 
-                .counter {
-                    font-size: 65px;
-                }
-            }
-        }
+        //         .counter {
+        //             font-size: 65px;
+        //         }
+        //     }
+        // }
 
-        @media (max-width: 899px) {
-            .card {
-                padding: 20px 0 10px;
+        // @media (max-width: 899px) {
+        //     .card {
+        //         padding: 20px 0 10px;
 
-                .title {
-                    font-size: 36px;
-                }
+        //         .title {
+        //             font-size: 36px;
+        //         }
 
-                .counter {
-                    min-width: 80px;
-                    text-align: center;
-                }
-            }
-        }
+        //         .counter {
+        //             min-width: 80px;
+        //             text-align: center;
+        //         }
+        //     }
+        // }
 
-        @media (max-width: 599px) {
-            .card {
-                gap: 7px;
-                .title {
-                    font-size: 30px;
-                }
+        // @media (max-width: 599px) {
+        //     .card {
+        //         gap: 7px;
+        //         .title {
+        //             font-size: 30px;
+        //         }
 
-                .counter {
-                    min-width: 60px;
-                    text-align: center;
-                }
-            }
-        }
+        //         .counter {
+        //             min-width: 60px;
+        //             text-align: center;
+        //         }
+        //     }
+        // }
     }
 }
 

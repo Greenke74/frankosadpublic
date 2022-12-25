@@ -16,10 +16,11 @@ const ContactsFooter = () => {
   }
 
   const isTablet = useMediaQuery('(max-width: 600px)')
+  const isTabletL = useMediaQuery('(max-width: 769px)')
 
   return (
-    <Card sx={{ width: '100%', boxShadow: 'none', padding: isTablet ? '15px 0' : '40px 0' }}>
-      <Grid container spacing={'2.2vw'}>
+    <Card sx={{ width: '100%', boxShadow: 'none', padding: isTablet ? '20px 0' : '40px 0' }}>
+      <Grid container spacing={isTabletL ? 3 : 5}>
         <Grid sm={12} item>
           {mainSettings.geoLocation &&
             <a

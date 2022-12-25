@@ -38,7 +38,7 @@ export const getBlocks = (type) => {
 		},
 		{
 			component: PortfolioPreview,
-			type: 'portfolioPreview'
+			type: 'ourWorks'
 		},
 		{
 			component: PictureDescription,

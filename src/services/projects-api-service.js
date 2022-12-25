@@ -57,13 +57,15 @@ export const getProjectPage = (value) => new Promise((resolve, reject) => {
 })
 
 export const selectProjects = (params) => new Promise((resolve, reject) => {
+	const start = params?.pageParam?.start??0
+	const count = params?.pageParam?.count??12
 	try {
-		supabase.rpc(params.typeFilter != null ? 'select_projects_with_filters' : 'select_projects', params)
+		supabase.rpc(params.typeFilter != null ? 'select_projects_with_filters' : 'select_projects', {start, count})
 		.then(response => {
 			if (response.error) {
 				reject(response.error.message)
 			}
-			resolve(response)
+			resolve({data: response.data, offset: count * (start + 1)})
 		})
 		.catch(error => reject(error))
 		
