@@ -10,18 +10,18 @@ import { breadcrumbsSlice } from '../redux/slices/breadcrumbsSlice';
 const ProjectPage = () => {
   
   const{alias} = useParams()
-
+  
   const{data: projectData} = useQuery(`projectId+${alias}`, () => getProjectPage(alias))
-
+  
   projectData?.data?.blocks?.sort((a, b) => a?.position - b?.position)
-
+  
   const breadcrumb = {
     breadcrumb: projectData?.data?.title,
     path: `/portfolio/${projectData?.data?.alias}`
   }
-
+  
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
       dispatch(breadcrumbsSlice.actions.update(breadcrumb))
   }, [projectData])

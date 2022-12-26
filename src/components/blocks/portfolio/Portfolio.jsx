@@ -1,11 +1,15 @@
-import { Box, Button, Grid, MenuItem, Select, Typography, useMediaQuery } from '@mui/material'
-import React from 'react'
-import PortfolioCard from './PortfolioCard.jsx'
-import './portfolio.scss'
-import { useInfiniteQuery } from 'react-query'
-import { selectProjects } from '../../../services/projects-api-service.js'
+import React, { useState } from 'react'
+import { useInfiniteQuery, useQuery } from 'react-query'
 import { useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+
+import { Box, Button, Grid, MenuItem, Select, Typography, useMediaQuery } from '@mui/material'
+import PortfolioCard from './PortfolioCard.jsx'
+
+import { selectProjects, getProjectCount } from '../../../services/projects-api-service.js'
+
+import './portfolio.scss'
+
+const projectTypes = ['Всі проєкти', 'Приватний будинок', 'Житловий комплекс', 'Підприємство']
 
 const Portfolio = () => {
 
@@ -16,15 +20,29 @@ const Portfolio = () => {
   const isMobile = useMediaQuery('(max-width: 436px)')
   const isLarge = useMediaQuery('(min-width:1641px)');
 
-  const count = 12
-  const [typeFilter, setTypeFilter] = useState('Всі проекти')
+  const [typeFilter, setTypeFilter] = useState(projectTypes[0])
 
-  const projectTypes = ['Всі проекти', 'Приватний будинок', 'Житловий комплекс', 'Підприємство']
+  const { data: count } = useQuery({
+    queryKey: [`projects-count`, typeFilter],
+    queryFn: getProjectCount,
+  });
 
-
-  const { data: projectsData, fetchNextPage } = useInfiniteQuery(
-    'projects', selectProjects , { getNextPageParam: (lastPage) => { console.log(lastPage); return {start: lastPage.offset, count};}}
+  const {
+    data: projectsData,
+    fetchNextPage,
+    isLoading
+  } = useInfiniteQuery(
+    [`projects`, typeFilter],
+    ({ pageParam }) =>
+      selectProjects({ start: pageParam?.start ?? 0, count: pageParam?.count ?? 12, typeFilter }),
+    {
+      getNextPageParam:
+        (lastPage) => ({ start: lastPage.offset, count: 12, typeFilter: lastPage?.typeFilter }),
+    }
   )
+
+  let projects = [];
+  (projectsData?.pages ?? []).forEach(page => projects = [...projects, ...page?.data])
 
   return (
     <>
@@ -68,15 +86,17 @@ const Portfolio = () => {
           </Select>
         </Box>
         <Grid container spacing={isMobile ? '15px' : isLaptop ? '20px' : '25px'} >
-          {projectsData?.pages?.map(item => item?.data?.map((elem, index) =>
+          {projects.map((elem, index) =>
             <Grid xs={12} sm={6} lg={4} item key={index} >
               <PortfolioCard data={elem} onClick={() => navigate(elem?.alias)} />
             </Grid>
-          ))}
+          )}
         </Grid>
-        <Grid display={'flex'} justifyContent={'center'} marginTop={isTablet ? '20px' : '45px'}>
-          <Button className='btn-review' variant='standart' onClick={()=>fetchNextPage()}>Переглянути ще</Button>
-        </Grid>
+        {!isLoading && count !== projects.length ? (
+          <Grid display={'flex'} justifyContent={'center'} marginTop={isTablet ? '20px' : '45px'}>
+            <Button className='btn-review' variant='standart' onClick={() => fetchNextPage()}>Переглянути ще</Button>
+          </Grid>
+        ) : null}
       </div>
     </>
 

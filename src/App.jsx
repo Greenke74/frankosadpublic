@@ -25,7 +25,7 @@ const App = () => {
   const routes = [
     {
       path: '/',
-      element: <MainPage/>
+      element: <MainPage />
     },
     {
       path: '/services',
@@ -41,7 +41,7 @@ const App = () => {
     },
     {
       path: '/portfolio/:alias',
-      element: <Project/>
+      element: <Project />
     },
     {
       path: '*',
@@ -54,7 +54,7 @@ const App = () => {
       queries: {
         retry: 0,
         refetchOnMount: false,
-        refetchOnWindowFocus: false
+        refetchOnWindowFocus: false,
       }
     }
   })
