@@ -9,9 +9,9 @@ import Contacts from './Contacts.jsx';
 import Footer from './Footer.jsx';
 import { Helmet } from 'react-helmet';
 
-import { getMainSettings } from '../../services/settingApiService';
+import { getImageSrc, getMainSettings } from '../../services/settingApiService';
 import { mainSettingsSlice } from '../../redux/slices/mainSettingsSlice.js';
-import MyBreadcrumbs from './MyBreadcrumbs.jsx';
+import Breadcrumbs from './Breadcrumbs.jsx';
 
 export const Layout = ({ children }) => {
   const mainSettings = useSelector(state => state.mainSettings); 
@@ -33,7 +33,7 @@ export const Layout = ({ children }) => {
   return (
     <>
       <Helmet>
-        {mainSettings?.favicon && <link rel="icon" type="image/x-icon" href={mainSettings?.favicon} />}
+        {mainSettings?.favicon && <link rel="icon" type="image/x-icon" href={getImageSrc(mainSettings?.favicon)} />}
         {mainSettings?.siteName && <title>{mainSettings?.siteName}</title>}
       </Helmet>
       {isDesktop && <Contacts />}
@@ -48,7 +48,7 @@ export const Layout = ({ children }) => {
               : <HeaderMobile />
           }
         </Suspense>
-        <MyBreadcrumbs/>
+        <Breadcrumbs/>
         <main
           style={{
             margin: '0 auto',

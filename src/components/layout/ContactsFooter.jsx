@@ -1,4 +1,4 @@
-import { Card, Grid, Typography } from '@mui/material'
+import { Card, Grid, Typography, useMediaQuery } from '@mui/material'
 import React from 'react'
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -11,13 +11,16 @@ const ContactsFooter = () => {
   const contactLinkStyle = {
     textDecoration: 'none',
     color: '#e9fbf09e',
-    fontSize: '20px',
+    fontSize: 'calc(13px + 0.4vw)',
     fontFamily: 'inherit'
   }
 
+  const isTablet = useMediaQuery('(max-width: 600px)')
+  const isTabletL = useMediaQuery('(max-width: 769px)')
+
   return (
-    <Card sx={{ width: '100%', boxShadow: 'none', padding: '40px 0' }}>
-      <Grid container spacing={5}>
+    <Card sx={{ width: '100%', boxShadow: 'none', padding: isTablet ? '20px 0' : '40px 0' }}>
+      <Grid container spacing={isTabletL ? 3 : 5}>
         <Grid sm={12} item>
           {mainSettings.geoLocation &&
             <a

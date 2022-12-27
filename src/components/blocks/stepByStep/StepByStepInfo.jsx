@@ -8,8 +8,8 @@ const StepByStepInfo = ({ blockData }) => {
     <div className='step-by-step-info-root'>
       <h2 className='title'>{blockData?.data?.stepsBlockTitle}</h2>
       <div className='step-by-step-info-wrapper'>
-        {blockData?.data?.steps?.map((elem, index) =>
-          <StepCard data={elem} key={index} />
+        {blockData?.data?.steps?.map((elem, idx) =>
+          <StepCard data={elem} number={idx+1} key={idx} />
         )}
       </div>
     </div>

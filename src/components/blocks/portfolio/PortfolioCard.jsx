@@ -4,7 +4,7 @@ import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import { getImageSrc } from '../../../services/settingApiService';
 
 
-const PortfolioCard = ({ data, size, onClick }) => {
+const PortfolioCard = ({ data, onClick }) => {
 
   const isDesktop = useMediaQuery('(min-width:991px)')
 
@@ -18,16 +18,10 @@ const PortfolioCard = ({ data, size, onClick }) => {
         onClick={onClick}
       >
         <Grid className='card-content'>
-          <Typography className='type-of-building'
-            fontSize={size === 'small' ? '16px' : '22px'}>{data.type}</Typography>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '5px'
-          }}>
-            <LocationOnOutlinedIcon fontSize={isDesktop ? 'medium' : 'small'} />
-            <Typography className='location'
-              fontSize={size === 'small' ? '20px' : '26px'}>{data.location}</Typography>
+          <LocationOnOutlinedIcon fontSize={isDesktop ? 'medium' : 'small'} sx={{marginBottom: '4px'}}/>
+          <div>
+            <Typography className='type-of-building'>{data.type}</Typography>
+            <Typography className='location'>{data.location.length > 30 ? data.location.substr(0, 30) + '...' : data.location}</Typography>
           </div>
         </Grid>
       </Grid>

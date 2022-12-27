@@ -2,17 +2,18 @@ import { Grid, Typography } from '@mui/material'
 import React from 'react'
 import { getImageSrc } from '../../../services/settingApiService'
 
-const ServiceCard = ({ data }) => {
+const ServiceCard = ({ data, onClick }) => {
   return (
     <>
       <Grid xs={12}
-        sx={{ backgroundImage: `url(${getImageSrc(data.image)})`, backgroundSize: 'cover' }}
+        sx={{ backgroundImage: `url(${getImageSrc(data.image)})`, backgroundSize: 'cover', cursor: 'pointer' }}
         className='service-card'
+        display={'flex'}
         alignItems={'end'}
         height={'350px'}
         width={'100%'}
-        borderRadius={'8px'}
-        container
+        borderRadius={'var(--block-border-radius)'} 
+        onClick={onClick}
         item>
         <Typography
           variant='h5'

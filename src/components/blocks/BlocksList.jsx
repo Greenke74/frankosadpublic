@@ -2,15 +2,6 @@ import React, { useState, useEffect, Suspense } from 'react';
 import PageBlock from './PageBlock.jsx';
 import { getBlocks } from './blocks.js';
 import { Spinner } from '../common/Spinner.jsx';
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import { styled } from '@mui/system';
-
-const HomeIcon = styled(HomeOutlinedIcon)({
-	height: '35px',
-	width: '35px',
-	display: 'flex',
-	alignItems: 'center'
-})
 
 const BlocksList = ({ blocksData, blockTypes }) => {
 	const [blocks, setBlocks] = useState([]);

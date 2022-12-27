@@ -1,11 +1,11 @@
 import React from 'react'
-import BlocksList from '../components/blocks/BlocksList.jsx'
+import Portfolio from '../components/blocks/portfolio/Portfolio.jsx'
 
 const PortfolioPage = () => {
   
   return (
     <>
-      <BlocksList blockTypes={['portfolio']} />
+      <Portfolio/>
     </>
   )
 }

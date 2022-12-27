@@ -15,6 +15,7 @@ import './styles/main.css';
 // pages
 const MainPage = lazy(() => import("./pages/MainPage.jsx"));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage.jsx'));
+const ServicesPage = lazy(() => import('./pages/ServicesPage.jsx'));
 const ServicePage = lazy(() => import('./pages/ServicePage.jsx'));
 const PortfolioPage = lazy(() => import('./pages/PortfolioPage.jsx'));
 const Project = lazy(() => import("./pages/ProjectPage.jsx"))
@@ -24,10 +25,14 @@ const App = () => {
   const routes = [
     {
       path: '/',
-      element: <MainPage/>
+      element: <MainPage />
     },
     {
       path: '/services',
+      element: <ServicesPage />
+    },
+    {
+      path: '/services/:alias',
       element: <ServicePage />
     },
     {
@@ -36,7 +41,7 @@ const App = () => {
     },
     {
       path: '/portfolio/:alias',
-      element: <Project/>
+      element: <Project />
     },
     {
       path: '*',
@@ -49,7 +54,7 @@ const App = () => {
       queries: {
         retry: 0,
         refetchOnMount: false,
-        refetchOnWindowFocus: false
+        refetchOnWindowFocus: false,
       }
     }
   })

@@ -1,5 +1,6 @@
 import { supabase } from "../supabase/supabaseClient.js";
 
+const allProjects = 'Всі проєкти'
 export const getProject = (id) => new Promise((resolve, reject) => {
 	try {
 		supabase
@@ -41,33 +42,70 @@ export const getProjects = () => new Promise((resolve, reject) => {
 export const getProjectPage = (value) => new Promise((resolve, reject) => {
 	try {
 		supabase
-		.rpc(
-			isNaN(value) && typeof(value) == 'string' ? 'get_project_page_by_alias' : 'get_project_page_by_id', 
-			isNaN(value) && typeof(value) == 'string' ? {_alias: value} : {_id: value})
-		.then(response => {
-			if (response.error	) {
-				reject(response.error.message)
-			}
-			resolve(response)
-		})
-		.catch(error => reject(error))
+			.rpc(
+				isNaN(value) && typeof (value) == 'string' ? 'get_project_page_by_alias' : 'get_project_page_by_id',
+				isNaN(value) && typeof (value) == 'string' ? { _alias: value } : { _id: value })
+			.then(response => {
+				if (response.error) {
+					reject(response.error.message)
+				}
+				resolve(response)
+			})
+			.catch(error => reject(error))
 	} catch (e) {
 		reject(e)
 	}
 })
 
-
 export const selectProjects = (params) => new Promise((resolve, reject) => {
+	const start = params?.start ?? 0
+	const count = params?.count ?? 12
+	const typeFilter = params?.typeFilter ?? null
+
 	try {
-		supabase.rpc(params.typeFilter != null ? 'select_projects_with_filters' : 'select_projects', params)
-		.then(response => {
-			if (response.error) {
-				reject(response.error.message)
+		supabase.rpc(
+			typeFilter !== null && typeFilter !== allProjects ?
+				'select_projects_with_filters' :
+				'select_projects',
+			{
+				start,
+				count,
+				typeFilter: typeFilter !== null && typeFilter !== allProjects ? typeFilter : undefined
 			}
-			resolve(response)
-		})
-		.catch(error => reject(error))
-		
+		)
+			.then(response => {
+				if (response.error) {
+					reject(response.error.message)
+				}
+				resolve({ data: response.data, offset: count + start, typeFilter })
+			})
+			.catch(error => reject(error))
+
+	} catch (e) {
+		reject(e)
+	}
+})
+
+export const getProjectCount = ({ queryKey }) => new Promise((resolve, reject) => {
+	const select = queryKey[1] === allProjects
+		? supabase
+			.from('projects')
+			.select('*', { count: 'exact', head: true })
+		: supabase
+			.from('projects')
+			.select('*', { count: 'exact', head: true })
+			.eq('type', queryKey[1])
+
+	try {
+		select
+			.then(response => {
+				if (response.error) {
+					reject(response.error.message)
+				}
+				resolve(response.count)
+			})
+			.catch(error => reject(error))
+
 	} catch (e) {
 		reject(e)
 	}

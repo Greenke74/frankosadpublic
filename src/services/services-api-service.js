@@ -35,20 +35,21 @@ export const getServices = () => new Promise((resolve, reject) => {
 	}
 })
 
+
 export const getServicePage = (value) => new Promise((resolve, reject) => {
-	try {
-		supabase
-		.rpc(
-			isNaN(value) && typeof(value) == 'string' ? 'get_service_page_by_alias' : 'get_service_page_by_id', 
-			isNaN(value) && typeof(value) == 'string' ? {_alias: value} : {_id: value})
-		.then(response => {
-			if (response.error) {
-				reject(response.error.message)
-			}
-			resolve(response)
-		})
-		.catch(error => reject(error))
-	} catch (e) {
-		reject(e)
-	}
+  try {
+    supabase
+    .rpc(
+      isNaN(value) && typeof(value) == 'string' ? 'get_service_page_by_alias' : 'get_service_page_by_id', 
+      isNaN(value) && typeof(value) == 'string' ? {_alias: value} : {_id: value})
+    .then(response => {
+      if (response.error) {
+        reject(response.error.message)
+      }
+      resolve(response)
+    })
+    .catch(error => reject(error))
+  } catch (e) {
+    reject(e)
+  }
 })
