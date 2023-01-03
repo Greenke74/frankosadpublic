@@ -9,7 +9,12 @@ import { selectProjects, getPublishedProjectsCount } from '../../../services/pro
 import './portfolio.scss'
 import { useInfiniteQuery, useQuery } from 'react-query'
 
-const projectTypes = ['Всі проєкти', 'Приватний будинок', 'Житловий комплекс', 'Підприємство']
+const projectTypes = [
+  "Всі проєкти",
+  "Приватний будинок",
+  "Житловий комплекс",
+  "Підприємство",
+];
 
 const Portfolio = () => {
 
@@ -31,10 +36,17 @@ const Portfolio = () => {
   } = useInfiniteQuery(
     [`projects`, typeFilter],
     ({ pageParam }) =>
-      selectProjects({ start: pageParam?.start ?? 0, count: pageParam?.count ?? 12, typeFilter }),
+      selectProjects({
+        start: pageParam?.start ?? 0,
+        count: pageParam?.count ?? 12,
+        typeFilter,
+      }),
     {
-      getNextPageParam:
-        (lastPage) => ({ start: lastPage.offset, count: 12, typeFilter: lastPage?.typeFilter }),
+      getNextPageParam: (lastPage) => ({
+        start: lastPage.offset,
+        count: 12,
+        typeFilter: lastPage?.typeFilter,
+      }),
     }
   )
 
@@ -43,13 +55,17 @@ const Portfolio = () => {
 
   return (
     <>
-      <div className='portfolio-container' style={{
-        margin: '0 auto',
-        width: '100%',
-        maxWidth: isLarge
-          ? 'var(--max-content-width)'
-          : `calc(100% - ${isLaptop ? '20px' : '40px'})`
-      }}>
+      <Box
+        className="portfolio-container"
+        sx={{
+          m: "0 auto",
+          width: "100%",
+          maxWidth: isLarge
+            ? "var(--max-content-width)"
+            : `calc(100% - ${isLaptop ? "20px" : "40px"})`,
+          p: 3,
+        }}
+      >
         <Box
           display='flex'
           justifyContent={'space-between'}
@@ -60,8 +76,12 @@ const Portfolio = () => {
           marginBottom={isMobile ? '15px' : isLaptop ? '20px' : '25px'}
           padding={'0.3vw 3vw'}
         >
-          <Typography className='projects-title'>Наші роботи</Typography>
-          <Select value={typeFilter} onChange={(event) => { setTypeFilter(event.target.value); }}
+          <Typography variant="h1">Наші роботи</Typography>
+          <Select
+            value={typeFilter}
+            onChange={(event) => {
+              setTypeFilter(event.target.value);
+            }}
             sx={{
               color: 'var(--white)',
               fontFamily: 'inherit',
@@ -69,7 +89,7 @@ const Portfolio = () => {
               fontWeight: '500',
               '& .MuiSelect-icon': { color: 'var(--white)' }
             }}
-            variant={'standard'}
+            variant={"standard"}
             disableUnderline
           >
             {projectTypes.map((item, idx) =>
@@ -82,22 +102,34 @@ const Portfolio = () => {
             )}
           </Select>
         </Box>
-        <Grid container spacing={isMobile ? '15px' : isLaptop ? '20px' : '25px'} >
-          {projects.map((elem, index) =>
-            <Grid xs={12} sm={6} lg={4} item key={index} >
-              <PortfolioCard data={elem} onClick={() => navigate(elem?.alias)} />
+        <Grid container spacing={3}>
+          {projects.map((elem, index) => (
+            <Grid xs={12} sm={6} lg={4} item key={index}>
+              <PortfolioCard
+                data={elem}
+                onClick={() => navigate(elem?.alias)}
+              />
             </Grid>
-          )}
+          ))}
         </Grid>
         {!isLoading && count !== projects.length ? (
-          <Grid display={'flex'} justifyContent={'center'} marginTop={isTablet ? '20px' : '45px'}>
-            <Button className='btn-review' variant='standart' onClick={() => fetchNextPage()}>Переглянути ще</Button>
+          <Grid
+            display={"flex"}
+            justifyContent={"center"}
+            marginTop={isTablet ? "20px" : "45px"}
+          >
+            <Button
+              className="btn-review"
+              variant="standart"
+              onClick={() => fetchNextPage()}
+            >
+              Переглянути ще
+            </Button>
           </Grid>
         ) : null}
-      </div>
+      </Box>
     </>
+  );
+};
 
-  )
-}
-
-export default Portfolio
+export default Portfolio;

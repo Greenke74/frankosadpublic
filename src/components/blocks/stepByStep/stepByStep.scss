@@ -1,9 +1,9 @@
 @import '../../../styles/mixins.scss';
 
-.step-by-step-info-root {
-    border-radius: var(--page-border-radius);
-    padding: 45px;
-    @include page-block;
+// .step-by-step-info-root {
+//     border-radius: var(--page-border-radius);
+//     padding: 45px;
+//     @include page-block;
 
     .title {
         font-weight: 500;
@@ -86,7 +86,7 @@
             background-position: center;
         }
     }
-}
+// }
 
 @media (max-width: 992px) {
     .step-by-step-info-root {

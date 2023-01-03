@@ -11,11 +11,11 @@ const PictureParagraph = ({ blockData }) => {
     <Box sx={{
       bgcolor: 'var(--block-background-color)',
       borderRadius: 'var(--page-border-radius)',
-      padding: '45px'
+      padding: 5
     }}>
       <Grid
         container
-        spacing='45px'
+        spacing={5}
       >
         <Grid item xs={12} md={6} sx={{order: blockData?.data?.imageFirst? undefined : 1}}>
           <img
@@ -29,7 +29,7 @@ const PictureParagraph = ({ blockData }) => {
           />
         </Grid>
         <Grid item xs={12} md={6} >
-          <Typography fontSize={24} whiteSpace='break-spaces'>{blockData?.data?.paragraph}</Typography>
+          <Typography whiteSpace='break-spaces'>{blockData?.data?.paragraph}</Typography>
         </Grid>
       </Grid>
     </Box>

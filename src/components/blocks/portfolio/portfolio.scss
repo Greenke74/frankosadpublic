@@ -3,7 +3,6 @@
 .portfolio-container {
     border-radius: var(--page-border-radius);
     @include page-block;
-    padding: 45px;
 
     .portfolio-card {
         aspect-ratio: 1.9;
@@ -94,14 +93,14 @@
     }
 }
 
-@media (max-width: 1600px) {
-    .portfolio-container {
-        padding: 30px;
-    }
-}
+// @media (max-width: 1600px) {
+//     .portfolio-container {
+//         padding: 30px;
+//     }
+// }
 
-@media (max-width: 541px) {
-    .portfolio-container {
-        padding: 15px;
-    }
-}
+// @media (max-width: 541px) {
+//     .portfolio-container {
+//         padding: 15px;
+//     }
+// }

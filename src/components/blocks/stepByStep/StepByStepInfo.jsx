@@ -1,19 +1,38 @@
-import React from 'react'
-import StepCard from './StepCard.jsx'
-import './stepByStep.scss'
+import React from "react";
+import StepCard from "./StepCard.jsx";
+// import "./stepByStep.scss";
+import { Box, Grid, Typography, useTheme } from "@mui/material";
 
 const StepByStepInfo = ({ blockData }) => {
-  
-  return (
-    <div className='step-by-step-info-root'>
-      <h2 className='title'>{blockData?.data?.stepsBlockTitle}</h2>
-      <div className='step-by-step-info-wrapper'>
-        {blockData?.data?.steps?.map((elem, idx) =>
-          <StepCard data={elem} number={idx+1} key={idx} />
-        )}
-      </div>
-    </div>
-  )
-}
+  const theme = useTheme();
 
-export default StepByStepInfo
+  return (
+    <Box
+      sx={{
+        p: 3,
+        borderRadius: 4,
+        bgcolor: "bg.block",
+        boxShadow: theme.shadows.block,
+      }}
+    >
+      <Typography
+        variant="h2"
+        sx={{
+          mb: 4,
+          textShadow: theme.lights.accent,
+        }}
+      >
+        {blockData?.data?.stepsBlockTitle}
+      </Typography>
+      <Grid container spacing={3}>
+        {blockData?.data?.steps?.map((item, idx) => (
+          <Grid item key={idx} sx={{ width: "100%" }}>
+            <StepCard data={item} number={idx + 1} key={idx} />
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
+  );
+};
+
+export default StepByStepInfo;

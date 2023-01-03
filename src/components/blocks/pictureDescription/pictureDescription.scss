@@ -1,6 +1,10 @@
 @import '../../../styles/mixins.scss';
 
 .description-container{
-  @include button-light;
+  @include accent-light;
+
+  .description-text {
+    @include theme-light;
+  }
   
 }
