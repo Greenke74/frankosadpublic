@@ -86,26 +86,16 @@ export const selectProjects = (params) => new Promise((resolve, reject) => {
 	}
 })
 
-export const getProjectCount = ({ queryKey }) => new Promise((resolve, reject) => {
-	const select = queryKey[1] === allProjects
-		? supabase
-			.from('projects')
-			.select('*', { count: 'exact', head: true })
-		: supabase
-			.from('projects')
-			.select('*', { count: 'exact', head: true })
-			.eq('type', queryKey[1])
-
+export const getPublishedProjectsCount = (typeFilter) => new Promise((resolve, reject) => {
 	try {
-		select
+		supabase.rpc('get_projects_count', { typeFilter })
 			.then(response => {
 				if (response.error) {
 					reject(response.error.message)
 				}
-				resolve(response.count)
+				resolve(response?.data?.count)
 			})
 			.catch(error => reject(error))
-
 	} catch (e) {
 		reject(e)
 	}

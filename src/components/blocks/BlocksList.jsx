@@ -14,7 +14,7 @@ const BlocksList = ({ blocksData, blockTypes }) => {
 		<>
 			{blocks.map((block, idx) => {
 				const Component = block?.component;
-				const blockData = blocksData?.find(blockData => blockData?.type === block?.type)
+				const blockData = blocksData?.find((blockData, index) => blockData?.type === block?.type && idx === index)
 
 				return Component && (
 					<Suspense fallback={<Spinner />} key={`${idx}`} >

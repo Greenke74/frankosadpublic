@@ -7,7 +7,6 @@ const IMAGE_ASPECT_RATIO = 5 / 3;
 
 const PictureParagraph = ({ blockData }) => {
 
-  console.log(blockData?.data?.paragraph);
   return (
     <Box sx={{
       bgcolor: 'var(--block-background-color)',

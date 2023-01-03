@@ -55,6 +55,7 @@ const App = () => {
         retry: 0,
         refetchOnMount: false,
         refetchOnWindowFocus: false,
+        staleTime: Infinity
       }
     }
   })

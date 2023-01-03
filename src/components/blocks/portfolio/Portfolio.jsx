@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
-import { useInfiniteQuery, useQuery } from 'react-query'
 import { useNavigate } from 'react-router-dom'
 
 import { Box, Button, Grid, MenuItem, Select, Typography, useMediaQuery } from '@mui/material'
 import PortfolioCard from './PortfolioCard.jsx'
 
-import { selectProjects, getProjectCount } from '../../../services/projects-api-service.js'
+import { selectProjects, getPublishedProjectsCount } from '../../../services/projects-api-service.js'
 
 import './portfolio.scss'
+import { useInfiniteQuery, useQuery } from 'react-query'
 
 const projectTypes = ['Всі проєкти', 'Приватний будинок', 'Житловий комплекс', 'Підприємство']
 
@@ -22,10 +22,7 @@ const Portfolio = () => {
 
   const [typeFilter, setTypeFilter] = useState(projectTypes[0])
 
-  const { data: count } = useQuery({
-    queryKey: [`projects-count`, typeFilter],
-    queryFn: getProjectCount,
-  });
+  const {data: count } = useQuery(`projects-count-${typeFilter}`, () => getPublishedProjectsCount(typeFilter))
 
   const {
     data: projectsData,
@@ -60,26 +57,26 @@ const Portfolio = () => {
           sx={{ background: 'linear-gradient(90deg, #2A2F23 0%, #1D2620 100%)' }}
           boxShadow='0px 0px 15px rgba(69, 84, 74, 0.2)'
           borderRadius='var(--page-border-radius)'
-          marginBottom={'40px'}
+          marginBottom={isMobile ? '15px' : isLaptop ? '20px' : '25px'}
           padding={'0.3vw 3vw'}
         >
           <Typography className='projects-title'>Наші роботи</Typography>
           <Select value={typeFilter} onChange={(event) => { setTypeFilter(event.target.value); }}
             sx={{
-              color: 'var(--theme-color)',
+              color: 'var(--white)',
               fontFamily: 'inherit',
               fontSize: 'calc(12px + 0.4vw)',
               fontWeight: '500',
-              '& .MuiSelect-icon': { color: 'var(--theme-color)' }
+              '& .MuiSelect-icon': { color: 'var(--white)' }
             }}
             variant={'standard'}
             disableUnderline
           >
             {projectTypes.map((item, idx) =>
               <MenuItem sx={{
-                color: 'var(--theme-color)',
+                color: item === typeFilter ? 'var(--theme-color)' : 'var(--white)',
                 fontFamily: 'inherit',
-                fontSize: 'calc(12px + 0.4vw)',
+                fontSize: 'calc(10px + 0.4vw)',
                 fontWeight: '500',
               }} key={idx} value={item}>{item}</MenuItem>
             )}

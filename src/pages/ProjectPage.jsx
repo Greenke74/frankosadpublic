@@ -15,14 +15,13 @@ const ProjectPage = () => {
   
   projectData?.data?.blocks?.sort((a, b) => a?.position - b?.position)
   
-  const breadcrumb = {
-    breadcrumb: projectData?.data?.title,
-    path: `/portfolio/${projectData?.data?.alias}`
-  }
-  
   const dispatch = useDispatch();
   
   useEffect(() => {
+    const breadcrumb = {
+      breadcrumb: projectData?.data?.title,
+      path: `/portfolio/${projectData?.data?.alias}`
+    }
       dispatch(breadcrumbsSlice.actions.update(breadcrumb))
   }, [projectData])
 
