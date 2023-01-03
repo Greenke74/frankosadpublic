@@ -9,6 +9,10 @@ import {
   QueryClient,
   QueryClientProvider
 } from 'react-query';
+
+import { ThemeProvider } from "@mui/material/styles";
+import muiTheme from "./theme/index.js";
+
 import "normalize.css";
 import './styles/main.css';
 
@@ -62,17 +66,19 @@ const App = () => {
   return <>
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
-        <Router>
-          <Layout>
-            <Suspense fallback={<StyledLinearProgress />}>
-              <Routes>
-                {routes.map(({ path, element }) => (
-                  <Route path={path} element={element} key={path} />
-                ))}
-              </Routes>
-            </Suspense>
-          </Layout>
-        </Router>
+        <ThemeProvider theme={muiTheme}>
+          <Router>
+            <Layout>
+              <Suspense fallback={<StyledLinearProgress />}>
+                <Routes>
+                  {routes.map(({ path, element }) => (
+                    <Route path={path} element={element} key={path} />
+                  ))}
+                </Routes>
+              </Suspense>
+            </Layout>
+          </Router>
+        </ThemeProvider>
       </QueryClientProvider>
     </Provider>
   </>;
