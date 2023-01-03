@@ -12,20 +12,20 @@ const BlocksList = ({ blocksData, blockTypes }) => {
 
 	return (
 		<>
-			{blocks.map((block, idx) => {
-				const Component = block?.component;
-				const blockData = blocksData?.find((blockData, index) => blockData?.type === block?.type && idx === index)
+			<Suspense fallback={<Spinner />} >
+				{blocks.map((block, idx) => {
+					const Component = block?.component;
+					const blockData = blocksData?.find((blockData, index) => blockData?.type === block?.type && idx === index)
 
-				return Component && (
-					<Suspense fallback={<Spinner />} key={`${idx}`} >
+					return Component && (
 						<PageBlock
 							component={Component}
 							fullWidth={block.fullWidth}
 							blockData={blockData}
 						/>
-					</Suspense>
-				)
-			})}
+					)
+				})}
+			</Suspense>
 		</>
 	)
 }

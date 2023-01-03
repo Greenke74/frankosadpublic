@@ -21,9 +21,9 @@ const Header = () => {
 					</div>
 					<div className='socialLinks'>
 						{mainSettings?.mediaLinks?.instagramUrl &&
-							<a href={mainSettings?.mediaLinks?.instagramUrl ?? ''}><InstagramIcon className='socialLink' /></a>}
+							<a href={mainSettings?.mediaLinks?.instagramUrl ?? ''} target={'_blank'}><InstagramIcon className='socialLink' /></a>}
 						{mainSettings?.mediaLinks?.facebookUrl &&
-							<a href={mainSettings?.mediaLinks?.facebookUrl ?? ''}><FacebookIcon className='socialLink' /></a>}
+							<a href={mainSettings?.mediaLinks?.facebookUrl ?? ''} target={'_blank'}><FacebookIcon className='socialLink' /></a>}
 					</div>
 				</nav>
 			</div>

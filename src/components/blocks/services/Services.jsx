@@ -7,7 +7,6 @@ import ServiceCard from './ServiceCard.jsx'
 
 import { getServices } from '../../../services/services-api-service.js'
 
-import './services.scss'
 import { useNavigate } from 'react-router-dom'
 
 const Services = () => {
@@ -22,18 +21,20 @@ const Services = () => {
 
 
   return (
-    <Box className='services-container' style={{
-      margin: '0 auto',
-      width: '100%',
+    <Box sx={{
+      m: '0 auto',
+      width: 'auto',
       maxWidth: isLarge
         ? 'var(--max-content-width)'
-        : `calc(100% - ${isLaptop ? '20px' : '40px'})`
+        : `calc(100% - ${isLaptop ? '20px' : '40px'})`,
+      overflow: 'hidden',
+      paddingRight: isMobile ? '15px' : isLaptop ? '20px' : '25px'
     }}>
       <Masonry columns={2} spacing={isMobile ? '15px' : isLaptop ? '20px' : '25px'}>
         {(servicesData ?? []).map((elem, index) =>
-          <Grid xs={12} sm={6} key={index} item >
+          <Box key={index} >
             <ServiceCard data={elem} onClick={() => { navigate(elem?.alias) }} />
-          </Grid>
+          </Box>
         )}
       </Masonry>
     </Box>
